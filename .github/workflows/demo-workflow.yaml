@@ -27,5 +27,5 @@ jobs:
       - name: Upload Container to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Ubuntu-Image-v${{ github.run_number }}
+          name: Anax-Images-v${{ github.run_number }}
           path: ${{ runner.temp }}/test_images/*
