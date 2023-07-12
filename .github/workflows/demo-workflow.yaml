@@ -17,12 +17,15 @@ jobs:
       
       - name: Save Docker Image
         run: |
-          cd $RUNNER_TEMP
+          mkdir $RUNNER_TEMP/test_images
+          cd $RUNNER_TEMP/test_images
           docker pull ubuntu:latest
-          docker save ubuntu:latest --output ubuntu.tar
-      
+          docker pull alpine:latest
+          docker save ubuntu:latest | gzip > ubuntu.tar.gz      
+          docker save alpine:latest | gzip > alpine.tar.gz
+
       - name: Upload Container to Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Ubuntu-Image-v${{ github.run_number }}
-          path: ${{ runner.temp }}/ubuntu.tar
+          path: ${{ runner.temp }}/test_images/*
