@@ -53,6 +53,8 @@ jobs:
               https://api.github.com/repos/blakep7/demo_release/actions/artifacts?per_page=100 \
               | jq -c '(.artifacts[] | select ( .name == "Anax-Images-v${{ inputs.version }}")).id')
           
+          echo $ARTIFACT_ID
+
           curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${GITHUB_TOKEN}"\
