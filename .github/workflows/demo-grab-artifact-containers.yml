@@ -30,6 +30,18 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_HOST: github.com
           
+      - name: Load Docker Images
+        run: |
+          cd $RUNNER_TEMP/images
+          echo "***BEFORE***"
+          docker image ls
+          echo "***BEFORE***"
+          docker load --input alpine.tar.gz
+          docker load --input ubuntu.tar.gz
+          echo "***AFTER***"
+          docker image ls
+          echo "***AFTER***"
+
   demo-API:
     runs-on: ubuntu-latest
 
@@ -52,8 +64,6 @@ jobs:
               -H "X-GitHub-Api-Version: 2022-11-28" \
               https://api.github.com/repos/blakep7/demo_release/actions/artifacts?per_page=100 \
               | jq -c '(.artifacts[] | select ( .name == "Anax-Images-v${{ inputs.version }}")).id')
-          
-          echo $ARTIFACT_ID
 
           curl -L \
             -H "Accept: application/vnd.github+json" \
@@ -62,13 +72,23 @@ jobs:
             https://api.github.com/repos/blakep7/demo_release/actions/artifacts/${ARTIFACT_ID}/zip \
             -o Artifact_Holder.zip
 
-          ls -la
-
           7z x Artifact_Holder.zip
-
+          rm -rf Artifact_Holder.zip
           ls -la
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Load Docker Images
+        run: |
+          cd $RUNNER_TEMP/images
+          echo "***BEFORE***"
+          docker image ls
+          echo "***BEFORE***"
+          docker load --input alpine.tar.gz
+          docker load --input ubuntu.tar.gz
+          echo "***AFTER***"
+          docker image ls
+          echo "***AFTER***"
+        
           
 
