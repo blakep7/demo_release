@@ -19,11 +19,15 @@ jobs:
         run: |
           mkdir $RUNNER_TEMP/test_images
           cd $RUNNER_TEMP/test_images
-          docker pull blakep7/arm64_anax:testing
-          docker pull blakep7/amd64_anax:testing
-          docker save blakep7/arm64_anax:testing | gzip > arm64_anax.tar.gz      
-          docker save blakep7/amd64_anax:testing | gzip > amd64_anax.tar.gz
 
+          images=('amd64_agbot' 'amd64_anax' 'amd64_anax_k8s' 'amd64_auto-upgrade-cronjob_k8s' 'amd64_cloud-sync-service' 'amd64_edge-sync-service' 'ppc64el_anax' 'ppc64el_anax_k8s' 'ppc64el_auto-upgrade-cronjob_k8s' 'ppc64el_edge-sync-service' 'arm64_anax' 'arm64_anax_k8s' 'arm64_auto-upgrade-cronjob_k8s' 'arm64_edge-sync-service')
+
+          for image in "${images[@]}"; do \
+            docker pull blakep7/${image}:testing; \
+            docker save blakep7/${image}:testing | gzip > ${image}.tar.gz; \
+          done
+
+      # We add this to all workflows for all docker images that are published
       - name: Upload Container to Artifacts
         uses: actions/upload-artifact@v3
         with:
