@@ -36,8 +36,8 @@ jobs:
           echo "***BEFORE***"
           docker image ls
           echo "***BEFORE***"
-          docker load --input alpine.tar.gz
-          docker load --input ubuntu.tar.gz
+          docker load --input arm64_anax.tar.gz
+          docker load --input amd64_anax.tar.gz
           echo "***AFTER***"
           docker image ls
           echo "***AFTER***"
@@ -84,8 +84,8 @@ jobs:
           echo "***BEFORE***"
           docker image ls
           echo "***BEFORE***"
-          docker load --input alpine.tar.gz
-          docker load --input ubuntu.tar.gz
+          docker load --input arm64_anax.tar.gz
+          docker load --input amd64_anax.tar.gz
           echo "***AFTER***"
           docker image ls
           echo "***AFTER***"
