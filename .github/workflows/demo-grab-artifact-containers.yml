@@ -23,7 +23,7 @@ jobs:
       - name: Pull artifacts using GH CLI
         run: |
           mkdir $RUNNER_TEMP/images && cd $RUNNER_TEMP/images
-          gh download -n Anax-Images-v${{ inputs.version }}
+          gh run download -n Anax-Images-v${{ inputs.version }}
           ls -la
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
