@@ -64,7 +64,7 @@ jobs:
 
           ls -la
 
-          unzip ./Artifact_Holder.zip
+          7z x Artifact_Holder.zip
 
           ls -la
 
