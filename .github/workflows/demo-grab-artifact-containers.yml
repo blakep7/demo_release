@@ -23,7 +23,7 @@ jobs:
       - name: Pull artifacts using GH CLI
         run: |
           mkdir $RUNNER_TEMP/images && cd $RUNNER_TEMP/images
-          gh download -n Anax-Image-v${{ inputs.version }}
+          gh download -n Anax-Images-v${{ inputs.version }}
           ls -la
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
               -H "Authorization: Bearer ${GITHUB_TOKEN}" \
               -H "X-GitHub-Api-Version: 2022-11-28" \
               https://api.github.com/repos/blakep7/demo_release/actions/artifacts?per_page=100 \
-              | jq -c '(.artifacts[] | select ( .name | contains("${{ inputs.version }}"))).id')
+              | jq -c '(.artifacts[] | select ( .name == "Anax-Images-v${{ inputs.version }}")).id')
           
           curl -L \
             -H "Accept: application/vnd.github+json" \
