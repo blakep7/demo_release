@@ -5,8 +5,24 @@ on: workflow_dispatch
 jobs:
   demo-job:
     runs-on: ubuntu-latest
-    environment: demo-release-env
+    # environment: demo-release-env
     steps:
-      - name: Test Step
+      # Upgrade Docker engine version, needed for building images
+      - name: Install Latest Docker Version
         run: |
-          echo "Success"
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+          sudo apt-get update
+          sudo apt-get install docker-ce
+      
+      - name: Save Docker Image
+        run: |
+          cd $RUNNER_TEMP
+          docker pull ubuntu:latest
+          docker save ubuntu:latest | gzip > ubuntu.tar.gz
+      
+      - name: Upload Container to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Ubuntu-Image-v${{ github.run_number }}
+          path: ${{ runner.temp }}/ubuntu.tar.gz
