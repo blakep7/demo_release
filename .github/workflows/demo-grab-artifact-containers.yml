@@ -62,7 +62,9 @@ jobs:
             https://api.github.com/repos/OWNER/REPO/actions/artifacts/${ARTIFACT_ID}/zip \
             --output Artifact_Holder.zip
 
-          unzip Artifact_Holder.zip
+          ls -la
+
+          # unzip Artifact_Holder.zip
 
           ls -la
 
