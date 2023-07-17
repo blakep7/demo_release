@@ -1,0 +1,15 @@
+name: Test Workflow
+
+on: workflow_dispatch
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+    steps:
+      # Upgrade Docker engine version, needed for building images
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: '4be652f'
+
+      
