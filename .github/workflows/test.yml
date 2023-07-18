@@ -13,6 +13,6 @@ jobs:
               echo $image
           done
         env:
-          ENVIMAGES: "'test1', 'test2', 'test3'"
+          ENVIMAGES: "test1 test2 test3"
 
       
