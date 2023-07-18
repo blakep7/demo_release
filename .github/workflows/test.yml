@@ -6,10 +6,13 @@ jobs:
   demo-job:
     runs-on: ubuntu-latest
     steps:
-      # Upgrade Docker engine version, needed for building images
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: '4be652f'
+      - name: Test
+        run: |
+          images=($ENVIMAGES)
+          for image in "${images[@]}"; do
+              echo $image
+          done
+        env:
+          ENVIMAGES: "'test1', 'test2', 'test3'"
 
       
