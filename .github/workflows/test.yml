@@ -5,6 +5,7 @@ on: workflow_dispatch
 jobs:
   demo-job:
     runs-on: ubuntu-latest
+    environment: demo-release-env
     steps:
       - name: Test
         run: |
@@ -16,5 +17,13 @@ jobs:
           fi
         env:
           ENVIMAGES: "test1 test2_64 test3"
+  demo-job2:
+    needs: demo-job
+    runs-on: ubuntu-latest
+    environment: demo-release-env
+    steps:
+      - name: Test
+        run: |
+          echo "TEST"
 
       
