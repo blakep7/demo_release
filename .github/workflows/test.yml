@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo "$${{ github.repository_owner }}_IMAGES"
+          sleep 600
         env:
           blakep7_IMAGES: WOW THIS WORKS
 
