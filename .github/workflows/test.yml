@@ -9,21 +9,8 @@ jobs:
     steps:
       - name: Test
         run: |
-          if [[ "$ENVIMAGES" == *"test2"* ]]; then
-            echo "WOW"
-          fi
-          if [[ "$ENVIMAGES" == *"test64"* ]]; then
-            echo "OKAY"
-          fi
+          echo "$${{ github.repository_owner }}_IMAGES"
         env:
-          ENVIMAGES: "test1 test2_64 test3"
-  demo-job2:
-    needs: demo-job
-    runs-on: ubuntu-latest
-    environment: demo-release-env
-    steps:
-      - name: Test
-        run: |
-          echo "TEST"
+          blakep7_IMAGES: WOW THIS WORKS
 
       
