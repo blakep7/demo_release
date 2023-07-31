@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Test
         run: |
+          echo "WOWOWOWO"
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
           echo "::debug::Test4"
           echo "::notice::Test3"
