@@ -4,13 +4,16 @@ on: workflow_dispatch
 
 jobs:
   demo-job:
-    runs-on: ubuntu-latest
-    environment: demo-release-env
+    runs-on: ubuntu-20.04
     steps:
       - name: Test
         run: |
-          sleep 600
-        env:
-          blakep7_IMAGES: WOW THIS WORKS
-
+          echo "::group::Testing Commands"
+          echo "::debug::"
+          echo "::notice::"
+          echo "::error::"
+          echo "::warning::"
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "::endgroup::"
+          
       
