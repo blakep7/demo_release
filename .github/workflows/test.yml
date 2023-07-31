@@ -8,12 +8,13 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo "::group::Testing Commands"
-          echo "::debug::"
-          echo "::notice::"
-          echo "::error::"
-          echo "::warning::"
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "::debug::Test4"
+          echo "::notice::Test3"
+          echo "::error::Test2"
+          echo "::warning::Test1"
+          echo "::group::Testing Commands"
+          echo "Intresting"
           echo "::endgroup::"
           
       
