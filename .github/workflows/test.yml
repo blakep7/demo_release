@@ -12,7 +12,7 @@ jobs:
           echo "::debug::Test4"
           echo "::notice::Test3"
           echo "::group::Testing Commands"
-          echo "::error file=.github/workflows/test.yml,line=15,title=Failure::Test2"
+          echo "::error file=.github/workflows/test.yml,title=Failure::Test2"
           echo "::warning::Test1"
           echo "Intresting"
           echo "::endgroup::"
