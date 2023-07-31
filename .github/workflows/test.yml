@@ -11,9 +11,9 @@ jobs:
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
           echo "::debug::Test4"
           echo "::notice::Test3"
-          echo "::error::Test2"
-          echo "::warning::Test1"
           echo "::group::Testing Commands"
+          echo "::error file=test.yml,line=15,title=### Failure::Test2"
+          echo "::warning::Test1"
           echo "Intresting"
           echo "::endgroup::"
           
