@@ -1,5 +1,7 @@
 ## Release Success! :tada:
+
 [View on GitHub](https://github.com/your-username/your-repo/releases/tag/v1.0.0)
+
 ### Versions Included in Release
 - Open Horizion: 1.0.0
 - Anax
