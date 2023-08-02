@@ -1,6 +1,14 @@
 name: Test Workflow
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      IS_LATEST:
+        description: 'latest'
+        required: true
+        type: boolean
+        default: false
+
 
 jobs:
   demo-job:
@@ -8,42 +16,9 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo "WOWOWOWO"
-          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
-          echo "::debug::Test4"
-          echo "::notice::Test3"
-          echo "::group::Testing Commands"
-          echo "::error file=.github/workflows/test.yml,title=Failure::Test2"
-          echo "::warning::Test1"
-          echo "Intresting"
-          echo "::endgroup::"
-          echo "::error title=API Call Failed::Update Open Horizon Semantic Version API call returned bad status code"
-
-          echo "::error title=Release Already Exists::Attempted to create a release for, a version of Open Horizon that already has a release page, see $RELEASE_STATUS"
-
-          echo "::error title=Failed API Call::Failed to get Anax Release Environment ID, check API Call"
-
-          echo "::error title=Failed API Call::Anax workflow dispatch API call returned bad status code"
-
-          echo "::error title=Failed API Call::Failed to get Anax Release Run ID, check API Call"
-
-          echo "::error title=Failed API Call::Anax approve workflow dispatch API call returned bad status code"
-
-          echo "::error title=Anax Release Stuck::Anax Release Manager seems to be stuck, status won't hit completion"
-
-          echo "::error title=Anax Release Failed::Anax Release Manager appears to have failed, been cancelled, or the API call failed"
-
-          echo "::error::Failed to get Examples Release Environment ID, check API Call"
-
-          echo "::error::Examples workflow dispatch API call returned bad status code"
-
-          echo "::error::Failed to get Examples Release Run ID, check API Call"
-
-          echo "::error::Examples approve workflow dispatch API call returned bad status code"
-
-          echo "::error::Examples Release Manager seems to be stuck, status won't hit completion"
-
-          echo "::error::Examples Release Manager appears to have failed or been cancelled"
+          if [[ ${{github.event.inputs.IS_LATEST}} ]]; then
+            echo "WORKS"
+          fi
 
           
       
