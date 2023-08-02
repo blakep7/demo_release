@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Test
         run: |
-          if [[ ${{github.event.inputs.IS_LATEST}} ]]; then
+          if [[ "${{github.event.inputs.IS_LATEST}}" == "true" ]]; then
             echo "WORKS"
           fi
 
