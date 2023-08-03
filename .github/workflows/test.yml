@@ -16,9 +16,11 @@ jobs:
     steps:
       - name: Test
         run: |
+          echo "does this work 1 " >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
           echo "does this work" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
+          echo "does this work 2" >> $GITHUB_STEP_SUMMARY
 
           
       
