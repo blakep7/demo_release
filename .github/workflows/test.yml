@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo ${{github	}}
+          echo ${{github.*}}
           echo ${{github.action	}}
           echo ${{github.action_path	}}
           echo ${{github.action_ref	}}
