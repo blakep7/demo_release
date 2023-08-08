@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo ${{join( github.*, '\n' )}}
+          echo -e ${{join( github.*, '\n' )}}
           
       
