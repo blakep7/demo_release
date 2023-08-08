@@ -3,7 +3,7 @@ name: Test Workflow
 on:
   push:
     paths:
-      - 'blakep7/demo_release/**'
+      - '**'
 
 
 jobs:
@@ -13,4 +13,5 @@ jobs:
       - name: Test
         run: |
           echo  SHABANG
+      - uses: user/log-event-path@v1.0.0
       
