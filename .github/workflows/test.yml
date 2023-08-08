@@ -13,5 +13,6 @@ jobs:
       - name: Test
         run: |
           echo -e ${{join( github.*, '\n' )}}
+        shell: bash
           
       
